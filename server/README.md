@@ -39,11 +39,22 @@ docker compose up mysql redis minio
 | `GET` | `/api/v1/auth/me` | 查询当前认证用户 |
 | `POST` | `/api/v1/auth/logout` | 撤销当前刷新令牌对应的会话 |
 | `POST` | `/api/v1/auth/logout-all` | 撤销当前用户的全部会话 |
+| `GET` | `/api/v1/families/current` | 查询当前家庭与成员角色 |
+| `POST` | `/api/v1/families` | 创建家庭并成为管理员 |
+| `POST` | `/api/v1/families/join` | 使用邀请码加入家庭 |
+| `GET` | `/api/v1/families/current/members` | 查询当前家庭成员 |
+| `PATCH` | `/api/v1/families/current/members/{user_id}` | 修改成员角色 |
+| `DELETE` | `/api/v1/families/current/members/{user_id}` | 将成员移出家庭 |
+| `POST` | `/api/v1/families/current/leave` | 退出当前家庭 |
+| `GET/POST` | `/api/v1/families/current/invitations` | 查询或创建邀请码 |
+| `DELETE` | `/api/v1/families/current/invitations/{id}` | 撤销邀请码 |
 | `GET` | `/docs` | 开发环境 OpenAPI UI |
 
 生产环境应设置 `MOMENPAIR_DOCS_ENABLED=false`，并通过网关限制诊断端点访问范围。
 
 `MOMENPAIR_SOCIAL_AUTH_MODE=fake` 仅用于本地内部认证联调。Fake Provider 根据平台和测试 code 生成稳定身份；生产环境会拒绝该配置。接入真实开放平台时由微信/QQ 适配器完成一次性 code 换票，客户端和账号服务契约保持不变。
+
+家庭邀请码使用高熵随机值，服务端只保存 SHA-256 摘要。默认邀请码 24 小时有效且仅可使用一次；管理员可撤销邀请、调整成员角色或移除成员。最后一名管理员在家庭仍有其他成员时必须先转让角色。
 
 ## 数据库迁移
 
