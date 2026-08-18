@@ -22,6 +22,50 @@
   "qqProvider": "QQ",
   "currentLoginProvider": "Current sign-in provider",
   "logout": "Sign out",
+  "familySpace": "Family space",
+  "noFamilyDescription": "Create a family space or join with an invitation code. An account can belong to only one family at a time.",
+  "familyName": "Family name",
+  "createFamily": "Create family",
+  "invitationCode": "Invitation code",
+  "joinFamily": "Join family",
+  "familyAdmin": "Admin",
+  "familyMember": "Member",
+  "familyMemberCount": "{count} members",
+  "@familyMemberCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "createInvitation": "Create one-time invitation",
+  "inviteCodeTitle": "Invitation created",
+  "inviteCodeDescription": "Share this securely with one family member. It expires in 24 hours and can be used once.",
+  "copy": "Copy",
+  "close": "Close",
+  "activeInvitations": "Invitations",
+  "invitationUsage": "Used {used}/{max} times",
+  "@invitationUsage": {
+    "placeholders": {
+      "used": {"type": "int"},
+      "max": {"type": "int"}
+    }
+  },
+  "invitationActive": "Available",
+  "invitationExhausted": "Used",
+  "invitationExpired": "Expired",
+  "invitationRevoked": "Revoked",
+  "revoke": "Revoke",
+  "familyMembers": "Family members",
+  "youLabel": "you",
+  "makeAdmin": "Make admin",
+  "makeMember": "Make member",
+  "removeMember": "Remove from family",
+  "leaveFamily": "Leave family",
+  "leaveFamilyConfirmTitle": "Leave this family?",
+  "leaveFamilyConfirmDescription": "You will immediately lose access to this family's content. The last admin must transfer the admin role first.",
+  "cancel": "Cancel",
+  "confirm": "Confirm",
+  "retry": "Retry",
+  "familyOperationFailed": "The family operation failed. Check your permission, invitation, or network and try again.",
   "frameworkReady": "Feature foundation is ready",
   "frameworkReadyDescription": "Domain features will be connected here incrementally."
 }

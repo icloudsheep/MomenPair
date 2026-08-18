@@ -230,6 +230,204 @@ abstract class AppLocalizations {
   /// **'退出登录'**
   String get logout;
 
+  /// No description provided for @familySpace.
+  ///
+  /// In zh, this message translates to:
+  /// **'家庭空间'**
+  String get familySpace;
+
+  /// No description provided for @noFamilyDescription.
+  ///
+  /// In zh, this message translates to:
+  /// **'创建一个家庭空间，或使用家人分享的邀请码加入。一个账号同时只能属于一个家庭。'**
+  String get noFamilyDescription;
+
+  /// No description provided for @familyName.
+  ///
+  /// In zh, this message translates to:
+  /// **'家庭名称'**
+  String get familyName;
+
+  /// No description provided for @createFamily.
+  ///
+  /// In zh, this message translates to:
+  /// **'创建家庭'**
+  String get createFamily;
+
+  /// No description provided for @invitationCode.
+  ///
+  /// In zh, this message translates to:
+  /// **'邀请码'**
+  String get invitationCode;
+
+  /// No description provided for @joinFamily.
+  ///
+  /// In zh, this message translates to:
+  /// **'加入家庭'**
+  String get joinFamily;
+
+  /// No description provided for @familyAdmin.
+  ///
+  /// In zh, this message translates to:
+  /// **'管理员'**
+  String get familyAdmin;
+
+  /// No description provided for @familyMember.
+  ///
+  /// In zh, this message translates to:
+  /// **'成员'**
+  String get familyMember;
+
+  /// No description provided for @familyMemberCount.
+  ///
+  /// In zh, this message translates to:
+  /// **'{count} 位成员'**
+  String familyMemberCount(int count);
+
+  /// No description provided for @createInvitation.
+  ///
+  /// In zh, this message translates to:
+  /// **'创建一次性邀请码'**
+  String get createInvitation;
+
+  /// No description provided for @inviteCodeTitle.
+  ///
+  /// In zh, this message translates to:
+  /// **'邀请码已创建'**
+  String get inviteCodeTitle;
+
+  /// No description provided for @inviteCodeDescription.
+  ///
+  /// In zh, this message translates to:
+  /// **'请安全地发送给一位家人。邀请码 24 小时内有效且只能使用一次。'**
+  String get inviteCodeDescription;
+
+  /// No description provided for @copy.
+  ///
+  /// In zh, this message translates to:
+  /// **'复制'**
+  String get copy;
+
+  /// No description provided for @close.
+  ///
+  /// In zh, this message translates to:
+  /// **'关闭'**
+  String get close;
+
+  /// No description provided for @activeInvitations.
+  ///
+  /// In zh, this message translates to:
+  /// **'邀请记录'**
+  String get activeInvitations;
+
+  /// No description provided for @invitationUsage.
+  ///
+  /// In zh, this message translates to:
+  /// **'已使用 {used}/{max} 次'**
+  String invitationUsage(int used, int max);
+
+  /// No description provided for @invitationActive.
+  ///
+  /// In zh, this message translates to:
+  /// **'可使用'**
+  String get invitationActive;
+
+  /// No description provided for @invitationExhausted.
+  ///
+  /// In zh, this message translates to:
+  /// **'已用完'**
+  String get invitationExhausted;
+
+  /// No description provided for @invitationExpired.
+  ///
+  /// In zh, this message translates to:
+  /// **'已过期'**
+  String get invitationExpired;
+
+  /// No description provided for @invitationRevoked.
+  ///
+  /// In zh, this message translates to:
+  /// **'已撤销'**
+  String get invitationRevoked;
+
+  /// No description provided for @revoke.
+  ///
+  /// In zh, this message translates to:
+  /// **'撤销'**
+  String get revoke;
+
+  /// No description provided for @familyMembers.
+  ///
+  /// In zh, this message translates to:
+  /// **'家庭成员'**
+  String get familyMembers;
+
+  /// No description provided for @youLabel.
+  ///
+  /// In zh, this message translates to:
+  /// **'你'**
+  String get youLabel;
+
+  /// No description provided for @makeAdmin.
+  ///
+  /// In zh, this message translates to:
+  /// **'设为管理员'**
+  String get makeAdmin;
+
+  /// No description provided for @makeMember.
+  ///
+  /// In zh, this message translates to:
+  /// **'设为普通成员'**
+  String get makeMember;
+
+  /// No description provided for @removeMember.
+  ///
+  /// In zh, this message translates to:
+  /// **'移出家庭'**
+  String get removeMember;
+
+  /// No description provided for @leaveFamily.
+  ///
+  /// In zh, this message translates to:
+  /// **'退出家庭'**
+  String get leaveFamily;
+
+  /// No description provided for @leaveFamilyConfirmTitle.
+  ///
+  /// In zh, this message translates to:
+  /// **'确认退出家庭？'**
+  String get leaveFamilyConfirmTitle;
+
+  /// No description provided for @leaveFamilyConfirmDescription.
+  ///
+  /// In zh, this message translates to:
+  /// **'退出后将立即无法访问这个家庭的内容。最后一名管理员需先转让管理员角色。'**
+  String get leaveFamilyConfirmDescription;
+
+  /// No description provided for @cancel.
+  ///
+  /// In zh, this message translates to:
+  /// **'取消'**
+  String get cancel;
+
+  /// No description provided for @confirm.
+  ///
+  /// In zh, this message translates to:
+  /// **'确认'**
+  String get confirm;
+
+  /// No description provided for @retry.
+  ///
+  /// In zh, this message translates to:
+  /// **'重试'**
+  String get retry;
+
+  /// No description provided for @familyOperationFailed.
+  ///
+  /// In zh, this message translates to:
+  /// **'家庭操作失败，请检查权限、邀请码或网络后重试。'**
+  String get familyOperationFailed;
+
   /// No description provided for @frameworkReady.
   ///
   /// In zh, this message translates to:

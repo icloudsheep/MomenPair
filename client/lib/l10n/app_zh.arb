@@ -22,6 +22,50 @@
   "qqProvider": "QQ",
   "currentLoginProvider": "当前登录平台",
   "logout": "退出登录",
+  "familySpace": "家庭空间",
+  "noFamilyDescription": "创建一个家庭空间，或使用家人分享的邀请码加入。一个账号同时只能属于一个家庭。",
+  "familyName": "家庭名称",
+  "createFamily": "创建家庭",
+  "invitationCode": "邀请码",
+  "joinFamily": "加入家庭",
+  "familyAdmin": "管理员",
+  "familyMember": "成员",
+  "familyMemberCount": "{count} 位成员",
+  "@familyMemberCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "createInvitation": "创建一次性邀请码",
+  "inviteCodeTitle": "邀请码已创建",
+  "inviteCodeDescription": "请安全地发送给一位家人。邀请码 24 小时内有效且只能使用一次。",
+  "copy": "复制",
+  "close": "关闭",
+  "activeInvitations": "邀请记录",
+  "invitationUsage": "已使用 {used}/{max} 次",
+  "@invitationUsage": {
+    "placeholders": {
+      "used": {"type": "int"},
+      "max": {"type": "int"}
+    }
+  },
+  "invitationActive": "可使用",
+  "invitationExhausted": "已用完",
+  "invitationExpired": "已过期",
+  "invitationRevoked": "已撤销",
+  "revoke": "撤销",
+  "familyMembers": "家庭成员",
+  "youLabel": "你",
+  "makeAdmin": "设为管理员",
+  "makeMember": "设为普通成员",
+  "removeMember": "移出家庭",
+  "leaveFamily": "退出家庭",
+  "leaveFamilyConfirmTitle": "确认退出家庭？",
+  "leaveFamilyConfirmDescription": "退出后将立即无法访问这个家庭的内容。最后一名管理员需先转让管理员角色。",
+  "cancel": "取消",
+  "confirm": "确认",
+  "retry": "重试",
+  "familyOperationFailed": "家庭操作失败，请检查权限、邀请码或网络后重试。",
   "frameworkReady": "功能框架已就绪",
   "frameworkReadyDescription": "后续领域功能将在此基础上逐步接入。"
 }

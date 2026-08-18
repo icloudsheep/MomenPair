@@ -83,6 +83,113 @@ class AppLocalizationsEn extends AppLocalizations {
   String get logout => 'Sign out';
 
   @override
+  String get familySpace => 'Family space';
+
+  @override
+  String get noFamilyDescription =>
+      'Create a family space or join with an invitation code. An account can belong to only one family at a time.';
+
+  @override
+  String get familyName => 'Family name';
+
+  @override
+  String get createFamily => 'Create family';
+
+  @override
+  String get invitationCode => 'Invitation code';
+
+  @override
+  String get joinFamily => 'Join family';
+
+  @override
+  String get familyAdmin => 'Admin';
+
+  @override
+  String get familyMember => 'Member';
+
+  @override
+  String familyMemberCount(int count) {
+    return '$count members';
+  }
+
+  @override
+  String get createInvitation => 'Create one-time invitation';
+
+  @override
+  String get inviteCodeTitle => 'Invitation created';
+
+  @override
+  String get inviteCodeDescription =>
+      'Share this securely with one family member. It expires in 24 hours and can be used once.';
+
+  @override
+  String get copy => 'Copy';
+
+  @override
+  String get close => 'Close';
+
+  @override
+  String get activeInvitations => 'Invitations';
+
+  @override
+  String invitationUsage(int used, int max) {
+    return 'Used $used/$max times';
+  }
+
+  @override
+  String get invitationActive => 'Available';
+
+  @override
+  String get invitationExhausted => 'Used';
+
+  @override
+  String get invitationExpired => 'Expired';
+
+  @override
+  String get invitationRevoked => 'Revoked';
+
+  @override
+  String get revoke => 'Revoke';
+
+  @override
+  String get familyMembers => 'Family members';
+
+  @override
+  String get youLabel => 'you';
+
+  @override
+  String get makeAdmin => 'Make admin';
+
+  @override
+  String get makeMember => 'Make member';
+
+  @override
+  String get removeMember => 'Remove from family';
+
+  @override
+  String get leaveFamily => 'Leave family';
+
+  @override
+  String get leaveFamilyConfirmTitle => 'Leave this family?';
+
+  @override
+  String get leaveFamilyConfirmDescription =>
+      'You will immediately lose access to this family\'s content. The last admin must transfer the admin role first.';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get confirm => 'Confirm';
+
+  @override
+  String get retry => 'Retry';
+
+  @override
+  String get familyOperationFailed =>
+      'The family operation failed. Check your permission, invitation, or network and try again.';
+
+  @override
   String get frameworkReady => 'Feature foundation is ready';
 
   @override

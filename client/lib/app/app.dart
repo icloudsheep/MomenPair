@@ -3,17 +3,21 @@ import 'package:momen_pair_client/app/theme/app_theme.dart';
 import 'package:momen_pair_client/features/auth/presentation/session_controller.dart';
 import 'package:momen_pair_client/features/auth/presentation/session_gate.dart';
 import 'package:momen_pair_client/features/auth/presentation/session_scope.dart';
+import 'package:momen_pair_client/features/families/presentation/family_controller.dart';
+import 'package:momen_pair_client/features/families/presentation/family_scope.dart';
 import 'package:momen_pair_client/l10n/generated/app_localizations.dart';
 
 class MomenPairApp extends StatelessWidget {
   const MomenPairApp({
     required this.sessionController,
+    required this.familyController,
     required this.enableFakeSocialLogin,
     this.locale,
     super.key,
   });
 
   final SessionController sessionController;
+  final FamilyController familyController;
   final bool enableFakeSocialLogin;
   final Locale? locale;
 
@@ -30,7 +34,10 @@ class MomenPairApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       home: SessionScope(
         controller: sessionController,
-        child: SessionGate(enableFakeSocialLogin: enableFakeSocialLogin),
+        child: FamilyScope(
+          controller: familyController,
+          child: SessionGate(enableFakeSocialLogin: enableFakeSocialLogin),
+        ),
       ),
     );
   }

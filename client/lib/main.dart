@@ -7,6 +7,8 @@ import 'package:momen_pair_client/core/network/api_client.dart';
 import 'package:momen_pair_client/core/storage/session_store.dart';
 import 'package:momen_pair_client/features/auth/data/http_auth_repository.dart';
 import 'package:momen_pair_client/features/auth/presentation/session_controller.dart';
+import 'package:momen_pair_client/features/families/data/http_family_repository.dart';
+import 'package:momen_pair_client/features/families/presentation/family_controller.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,9 +19,14 @@ void main() {
     store: SecureSessionStore(),
   );
   final sessionController = SessionController(repository: repository);
+  final familyController = FamilyController(
+    repository: HttpFamilyRepository(apiClient: apiClient),
+    sessionController: sessionController,
+  );
   runApp(
     MomenPairApp(
       sessionController: sessionController,
+      familyController: familyController,
       enableFakeSocialLogin: config.enableFakeSocialLogin,
     ),
   );
