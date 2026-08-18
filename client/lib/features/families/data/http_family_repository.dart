@@ -4,7 +4,7 @@ import 'package:momen_pair_client/features/families/domain/family_repository.dar
 
 class HttpFamilyRepository implements FamilyRepository {
   const HttpFamilyRepository({required ApiClient apiClient})
-      : _apiClient = apiClient;
+    : _apiClient = apiClient;
 
   final ApiClient _apiClient;
 
@@ -56,9 +56,7 @@ class HttpFamilyRepository implements FamilyRepository {
   }
 
   @override
-  Future<CreatedFamilyInvitation> createInvitation(
-    String accessToken,
-  ) async {
+  Future<CreatedFamilyInvitation> createInvitation(String accessToken) async {
     final json = await _apiClient.post(
       'families/current/invitations',
       body: const {'expires_in_hours': 24, 'max_uses': 1},
@@ -68,10 +66,7 @@ class HttpFamilyRepository implements FamilyRepository {
   }
 
   @override
-  Future<void> revokeInvitation(
-    String accessToken,
-    String invitationId,
-  ) async {
+  Future<void> revokeInvitation(String accessToken, String invitationId) async {
     await _apiClient.delete(
       'families/current/invitations/$invitationId',
       accessToken: accessToken,

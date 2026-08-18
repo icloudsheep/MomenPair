@@ -9,11 +9,11 @@ class SessionController extends ChangeNotifier {
   SessionController({
     required AuthRepository repository,
     AuthSession? initialSession,
-  })  : _repository = repository,
-        _session = initialSession,
-        _status = initialSession == null
-            ? SessionStatus.loading
-            : SessionStatus.authenticated;
+  }) : _repository = repository,
+       _session = initialSession,
+       _status = initialSession == null
+           ? SessionStatus.loading
+           : SessionStatus.authenticated;
 
   final AuthRepository _repository;
   AuthSession? _session;

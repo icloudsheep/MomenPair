@@ -179,6 +179,123 @@ class AppLocalizationsZh extends AppLocalizations {
   String get familyOperationFailed => '家庭操作失败，请检查权限、邀请码或网络后重试。';
 
   @override
+  String get logsRequireFamily => '请先在“我的”页面创建或加入家庭，日志只对当前家庭成员可见。';
+
+  @override
+  String get logsEmptyTitle => '还没有家庭日志';
+
+  @override
+  String get logsEmptyDescription => '写下第一条日志，记录值得一起记住的时刻。';
+
+  @override
+  String get createLog => '写日志';
+
+  @override
+  String get editLog => '编辑日志';
+
+  @override
+  String get logDetailTitle => '日志详情';
+
+  @override
+  String get logTitleLabel => '标题';
+
+  @override
+  String get logSubtitleLabel => '副标题（可选）';
+
+  @override
+  String get logBodyLabel => '正文';
+
+  @override
+  String get logBodyHint => '写下这一刻…';
+
+  @override
+  String get logTitleRequired => '请输入日志标题';
+
+  @override
+  String get logBodyRequired => '请输入日志正文';
+
+  @override
+  String get editMode => '编辑';
+
+  @override
+  String get previewMode => '预览';
+
+  @override
+  String get addPhotos => '添加图片';
+
+  @override
+  String get photoLimitHint => '最多 9 张，发布前会自动压缩';
+
+  @override
+  String get imageUploadFailed => '图片上传失败，请稍后重试';
+
+  @override
+  String get removePhoto => '移除图片';
+
+  @override
+  String get previewEmpty => '开始写作后可在这里预览';
+
+  @override
+  String get publish => '发布';
+
+  @override
+  String get save => '保存';
+
+  @override
+  String get delete => '删除';
+
+  @override
+  String get deleteLogTitle => '删除这篇日志？';
+
+  @override
+  String get deleteLogDescription => '删除后家庭成员将无法再访问正文，此操作不能在客户端撤销。';
+
+  @override
+  String get loadMore => '加载更多';
+
+  @override
+  String likesCount(int count) {
+    return '$count 个赞';
+  }
+
+  @override
+  String commentsCount(int count) {
+    return '$count 条评论';
+  }
+
+  @override
+  String get commentsTitle => '评论';
+
+  @override
+  String get commentsEmpty => '还没有评论，来说点什么吧。';
+
+  @override
+  String get addComment => '写评论';
+
+  @override
+  String get commentHint => '写下评论…';
+
+  @override
+  String get send => '发送';
+
+  @override
+  String get reply => '回复';
+
+  @override
+  String replyTo(String name) {
+    return '回复 @$name';
+  }
+
+  @override
+  String get deletedComment => '这条评论已删除';
+
+  @override
+  String get logVersionConflict => '这篇内容已在其他设备更新，请返回列表刷新后再编辑。';
+
+  @override
+  String get logOperationFailed => '日志操作失败，请检查家庭权限或网络后重试。';
+
+  @override
   String get frameworkReady => '功能框架已就绪';
 
   @override

@@ -30,11 +30,11 @@ function isSuccess(statusCode) {
 }
 
 function request(path, options) {
-  const { method = 'GET', data, accessToken } = options || {};
-  const header = {
+  const { method = 'GET', data, accessToken, headers = {} } = options || {};
+  const header = Object.assign({
     accept: 'application/json',
     'content-type': 'application/json; charset=utf-8',
-  };
+  }, headers);
   if (accessToken) {
     header.authorization = `Bearer ${accessToken}`;
   }
@@ -65,6 +65,58 @@ function request(path, options) {
   });
 }
 
+function uploadFile(path, filePath, fieldName, accessToken) {
+  return new Promise((resolve, reject) => {
+    wx.uploadFile({
+      url: resolveUrl(path),
+      filePath,
+      name: fieldName,
+      header: {
+        accept: 'application/json',
+        authorization: `Bearer ${accessToken}`,
+      },
+      timeout: getEnv().requestTimeout,
+      success(response) {
+        let data;
+        try {
+          data = JSON.parse(response.data);
+        } catch (error) {
+          reject(new ApiError('invalid_server_response', response.statusCode));
+          return;
+        }
+        if (!isSuccess(response.statusCode)) {
+          reject(new ApiError(extractErrorCode(data), response.statusCode));
+          return;
+        }
+        resolve(data);
+      },
+      fail() {
+        reject(new ApiError('network_unavailable', NETWORK_ERROR_STATUS));
+      },
+    });
+  });
+}
+
+function downloadFile(path, accessToken) {
+  return new Promise((resolve, reject) => {
+    wx.downloadFile({
+      url: resolveUrl(path),
+      header: { authorization: `Bearer ${accessToken}` },
+      timeout: getEnv().requestTimeout,
+      success(response) {
+        if (!isSuccess(response.statusCode)) {
+          reject(new ApiError('request_failed', response.statusCode));
+          return;
+        }
+        resolve(response.tempFilePath);
+      },
+      fail() {
+        reject(new ApiError('network_unavailable', NETWORK_ERROR_STATUS));
+      },
+    });
+  });
+}
+
 function post(path, data, accessToken) {
   return request(path, { method: 'POST', data, accessToken });
 }
@@ -73,12 +125,29 @@ function get(path, accessToken) {
   return request(path, { method: 'GET', accessToken });
 }
 
+function put(path, data, accessToken) {
+  return request(path, { method: 'PUT', data, accessToken });
+}
+
+function patch(path, data, accessToken) {
+  return request(path, { method: 'PATCH', data, accessToken });
+}
+
+function remove(path, accessToken) {
+  return request(path, { method: 'DELETE', accessToken });
+}
+
 module.exports = {
   ApiError,
   NETWORK_ERROR_STATUS,
   extractErrorCode,
   isSuccess,
   request,
+  uploadFile,
+  downloadFile,
   post,
   get,
+  put,
+  patch,
+  remove,
 };

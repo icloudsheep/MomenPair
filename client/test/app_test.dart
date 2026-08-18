@@ -7,6 +7,9 @@ import 'package:momen_pair_client/features/auth/presentation/session_controller.
 import 'package:momen_pair_client/features/families/domain/family_models.dart';
 import 'package:momen_pair_client/features/families/domain/family_repository.dart';
 import 'package:momen_pair_client/features/families/presentation/family_controller.dart';
+import 'package:momen_pair_client/features/logs/domain/log_models.dart';
+import 'package:momen_pair_client/features/logs/domain/log_repository.dart';
+import 'package:momen_pair_client/features/logs/presentation/log_controller.dart';
 
 void main() {
   testWidgets('shows the five primary destinations', (tester) async {
@@ -19,6 +22,7 @@ void main() {
       MomenPairApp(
         sessionController: controller,
         familyController: familyController,
+        logController: _createLogController(controller, familyController),
         enableFakeSocialLogin: true,
       ),
     );
@@ -40,6 +44,7 @@ void main() {
       MomenPairApp(
         sessionController: controller,
         familyController: familyController,
+        logController: _createLogController(controller, familyController),
         enableFakeSocialLogin: true,
         locale: const Locale('zh'),
       ),
@@ -56,10 +61,12 @@ void main() {
       repository: _FakeAuthRepository(),
       initialSession: _session,
     );
+    final familyController = _createFamilyController(controller);
     await tester.pumpWidget(
       MomenPairApp(
         sessionController: controller,
-        familyController: _createFamilyController(controller),
+        familyController: familyController,
+        logController: _createLogController(controller, familyController),
         enableFakeSocialLogin: true,
         locale: const Locale('zh'),
       ),
@@ -67,10 +74,7 @@ void main() {
 
     await tester.tap(find.byIcon(Icons.person_outline));
     await tester.pumpAndSettle();
-    await tester.drag(
-      find.byType(CustomScrollView),
-      const Offset(0, -500),
-    );
+    await tester.drag(find.byType(CustomScrollView), const Offset(0, -500));
     await tester.pumpAndSettle();
 
     expect(find.text('家庭空间'), findsOneWidget);
@@ -78,6 +82,17 @@ void main() {
     expect(find.text('创建一次性邀请码'), findsOneWidget);
     expect(find.text('本地用户 (你)'), findsOneWidget);
   });
+}
+
+LogController _createLogController(
+  SessionController sessionController,
+  FamilyController familyController,
+) {
+  return LogController(
+    repository: _FakeLogRepository(),
+    sessionController: sessionController,
+    familyController: familyController,
+  );
 }
 
 const _user = AuthUser(
@@ -95,7 +110,9 @@ const _session = AuthSession(
 class _FakeAuthRepository implements AuthRepository {
   @override
   Future<AuthSession> loginWithCode(
-      SocialProvider provider, String code) async {
+    SocialProvider provider,
+    String code,
+  ) async {
     return _session;
   }
 
@@ -120,30 +137,25 @@ class _FakeFamilyRepository implements FamilyRepository {
 
   @override
   Future<CreatedFamilyInvitation> createInvitation(String accessToken) async =>
-      CreatedFamilyInvitation(
-        invitation: _invitation,
-        code: 'invitation-code',
-      );
+      CreatedFamilyInvitation(invitation: _invitation, code: 'invitation-code');
 
   @override
   Future<FamilyMember> changeMemberRole(
     String accessToken,
     String userId,
     FamilyRole role,
-  ) async =>
-      _member;
+  ) async => _member;
 
   @override
   Future<FamilySummary> getCurrent(String accessToken) async => _family;
 
   @override
-  Future<List<FamilyInvitation>> getInvitations(String accessToken) async =>
-      [_invitation];
+  Future<List<FamilyInvitation>> getInvitations(String accessToken) async => [
+    _invitation,
+  ];
 
   @override
-  Future<List<FamilyMember>> getMembers(String accessToken) async => [
-        _member,
-      ];
+  Future<List<FamilyMember>> getMembers(String accessToken) async => [_member];
 
   @override
   Future<FamilySummary> join(String accessToken, String code) async => _family;
@@ -179,4 +191,100 @@ final _invitation = FamilyInvitation(
   maxUses: 1,
   usedCount: 0,
   status: 'active',
+);
+
+class _FakeLogRepository implements LogRepository {
+  @override
+  Future<FamilyLog> createLog(
+    String accessToken, {
+    required String requestId,
+    required String title,
+    String? subtitle,
+    required String body,
+    List<String> mediaIds = const [],
+  }) async => _log;
+
+  @override
+  Future<LogComment> createComment(
+    String accessToken,
+    String logId, {
+    required String requestId,
+    String? title,
+    required String body,
+    String? replyToCommentId,
+  }) => throw UnimplementedError();
+
+  @override
+  Future<void> deleteComment(
+    String accessToken,
+    String logId,
+    String commentId,
+    int expectedVersion,
+  ) async {}
+
+  @override
+  Future<void> deleteLog(
+    String accessToken,
+    String logId,
+    int expectedVersion,
+  ) async {}
+
+  @override
+  Future<List<LogComment>> getComments(
+    String accessToken,
+    String logId,
+  ) async => const [];
+
+  @override
+  Future<FamilyLog> getLog(String accessToken, String logId) async => _log;
+
+  @override
+  Future<FamilyLogPage> getLogs(
+    String accessToken, {
+    String? cursor,
+    int limit = 20,
+  }) async => FamilyLogPage(items: [_log], nextCursor: null);
+
+  @override
+  Future<LogReaction> setLiked(
+    String accessToken,
+    String logId,
+    bool liked,
+  ) async => LogReaction(liked: liked, likeCount: liked ? 1 : 0);
+
+  @override
+  Future<FamilyLog> updateLog(
+    String accessToken,
+    String logId, {
+    required int expectedVersion,
+    required String title,
+    String? subtitle,
+    required String body,
+    List<String> mediaIds = const [],
+  }) async => _log;
+
+  @override
+  Future<LogMedia> uploadMedia(
+    String accessToken, {
+    required List<int> bytes,
+    required String filename,
+  }) => throw UnimplementedError();
+
+  @override
+  Future<void> deletePendingMedia(String accessToken, String mediaId) async {}
+}
+
+final _log = FamilyLog(
+  id: 'log-id',
+  authorUserId: 'user-id',
+  authorDisplayName: '本地用户',
+  title: '第一篇家庭日志',
+  subtitle: null,
+  body: '**今天** 一起吃饭。',
+  version: 1,
+  likeCount: 0,
+  commentCount: 0,
+  likedByMe: false,
+  createdAt: DateTime.utc(2026, 8, 18),
+  updatedAt: DateTime.utc(2026, 8, 18),
 );

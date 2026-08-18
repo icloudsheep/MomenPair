@@ -66,6 +66,58 @@
   "confirm": "Confirm",
   "retry": "Retry",
   "familyOperationFailed": "The family operation failed. Check your permission, invitation, or network and try again.",
+  "logsRequireFamily": "Create or join a family from Profile first. Logs are visible only to current family members.",
+  "logsEmptyTitle": "No family logs yet",
+  "logsEmptyDescription": "Write the first log and capture a moment worth remembering together.",
+  "createLog": "Write log",
+  "editLog": "Edit log",
+  "logDetailTitle": "Log details",
+  "logTitleLabel": "Title",
+  "logSubtitleLabel": "Subtitle (optional)",
+  "logBodyLabel": "Body",
+  "logBodyHint": "Write about this moment…",
+  "logTitleRequired": "Enter a log title",
+  "logBodyRequired": "Enter log content",
+  "editMode": "Edit",
+  "previewMode": "Preview",
+  "addPhotos": "Add photos",
+  "photoLimitHint": "Up to 9 photos, compressed before publishing",
+  "imageUploadFailed": "Photo upload failed. Try again later.",
+  "removePhoto": "Remove photo",
+  "previewEmpty": "Your preview will appear here",
+  "publish": "Publish",
+  "save": "Save",
+  "delete": "Delete",
+  "deleteLogTitle": "Delete this log?",
+  "deleteLogDescription": "Family members will no longer be able to access its content. This cannot be undone in the app.",
+  "loadMore": "Load more",
+  "likesCount": "{count} likes",
+  "@likesCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "commentsCount": "{count} comments",
+  "@commentsCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "commentsTitle": "Comments",
+  "commentsEmpty": "No comments yet. Start the conversation.",
+  "addComment": "Add comment",
+  "commentHint": "Write a comment…",
+  "send": "Send",
+  "reply": "Reply",
+  "replyTo": "Reply to @{name}",
+  "@replyTo": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "deletedComment": "This comment was deleted",
+  "logVersionConflict": "This content changed on another device. Return to the list, refresh, and edit again.",
+  "logOperationFailed": "The log operation failed. Check your family access or network and try again.",
   "frameworkReady": "Feature foundation is ready",
   "frameworkReadyDescription": "Domain features will be connected here incrementally."
 }

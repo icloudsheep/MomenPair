@@ -37,8 +37,10 @@ class FeaturePlaceholder extends StatelessWidget {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(16),
-                        child:
-                            Icon(icon, color: colorScheme.onPrimaryContainer),
+                        child: Icon(
+                          icon,
+                          color: colorScheme.onPrimaryContainer,
+                        ),
                       ),
                     ),
                     const SizedBox(height: 24),
@@ -47,14 +49,16 @@ class FeaturePlaceholder extends StatelessWidget {
                       style: Theme.of(context).textTheme.headlineSmall,
                     ),
                     const SizedBox(height: 8),
-                    Text(description,
-                        style: Theme.of(context).textTheme.bodyLarge),
+                    Text(
+                      description,
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
                     const SizedBox(height: 6),
                     Text(
                       l10n.frameworkReadyDescription,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: colorScheme.onSurfaceVariant,
-                          ),
+                        color: colorScheme.onSurfaceVariant,
+                      ),
                     ),
                   ],
                 ),

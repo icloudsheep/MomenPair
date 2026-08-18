@@ -190,6 +190,128 @@ class AppLocalizationsEn extends AppLocalizations {
       'The family operation failed. Check your permission, invitation, or network and try again.';
 
   @override
+  String get logsRequireFamily =>
+      'Create or join a family from Profile first. Logs are visible only to current family members.';
+
+  @override
+  String get logsEmptyTitle => 'No family logs yet';
+
+  @override
+  String get logsEmptyDescription =>
+      'Write the first log and capture a moment worth remembering together.';
+
+  @override
+  String get createLog => 'Write log';
+
+  @override
+  String get editLog => 'Edit log';
+
+  @override
+  String get logDetailTitle => 'Log details';
+
+  @override
+  String get logTitleLabel => 'Title';
+
+  @override
+  String get logSubtitleLabel => 'Subtitle (optional)';
+
+  @override
+  String get logBodyLabel => 'Body';
+
+  @override
+  String get logBodyHint => 'Write about this moment…';
+
+  @override
+  String get logTitleRequired => 'Enter a log title';
+
+  @override
+  String get logBodyRequired => 'Enter log content';
+
+  @override
+  String get editMode => 'Edit';
+
+  @override
+  String get previewMode => 'Preview';
+
+  @override
+  String get addPhotos => 'Add photos';
+
+  @override
+  String get photoLimitHint => 'Up to 9 photos, compressed before publishing';
+
+  @override
+  String get imageUploadFailed => 'Photo upload failed. Try again later.';
+
+  @override
+  String get removePhoto => 'Remove photo';
+
+  @override
+  String get previewEmpty => 'Your preview will appear here';
+
+  @override
+  String get publish => 'Publish';
+
+  @override
+  String get save => 'Save';
+
+  @override
+  String get delete => 'Delete';
+
+  @override
+  String get deleteLogTitle => 'Delete this log?';
+
+  @override
+  String get deleteLogDescription =>
+      'Family members will no longer be able to access its content. This cannot be undone in the app.';
+
+  @override
+  String get loadMore => 'Load more';
+
+  @override
+  String likesCount(int count) {
+    return '$count likes';
+  }
+
+  @override
+  String commentsCount(int count) {
+    return '$count comments';
+  }
+
+  @override
+  String get commentsTitle => 'Comments';
+
+  @override
+  String get commentsEmpty => 'No comments yet. Start the conversation.';
+
+  @override
+  String get addComment => 'Add comment';
+
+  @override
+  String get commentHint => 'Write a comment…';
+
+  @override
+  String get send => 'Send';
+
+  @override
+  String get reply => 'Reply';
+
+  @override
+  String replyTo(String name) {
+    return 'Reply to @$name';
+  }
+
+  @override
+  String get deletedComment => 'This comment was deleted';
+
+  @override
+  String get logVersionConflict =>
+      'This content changed on another device. Return to the list, refresh, and edit again.';
+
+  @override
+  String get logOperationFailed =>
+      'The log operation failed. Check your family access or network and try again.';
+
+  @override
   String get frameworkReady => 'Feature foundation is ready';
 
   @override

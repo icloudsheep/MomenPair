@@ -4,7 +4,7 @@
 // 与 docs/api-conventions.md 的令牌约定一致。
 
 const api = require('../config/api');
-const { post, get, ApiError } = require('./request');
+const { post, request, uploadFile, downloadFile, ApiError } = require('./request');
 const storage = require('./storage');
 const { getEnv } = require('../config/env');
 
@@ -168,13 +168,48 @@ function hasUsableAccessToken() {
 
 // 业务请求统一入口：先保证访问令牌可用，遇到 401 再刷新一次并重放。
 async function authorized(path, options) {
-  const { method = 'GET', data } = options || {};
+  const { method = 'GET', data, headers } = options || {};
   if (!hasUsableAccessToken()) {
     await refresh();
     notify();
   }
-  const send = () =>
-    method === 'GET' ? get(path, accessToken) : post(path, data, accessToken);
+  const send = () => request(path, { method, data, headers, accessToken });
+  try {
+    return await send();
+  } catch (error) {
+    if (error instanceof ApiError && error.statusCode === 401) {
+      await refresh();
+      notify();
+      return send();
+    }
+    throw error;
+  }
+}
+
+async function authorizedUpload(path, filePath, fieldName) {
+  if (!hasUsableAccessToken()) {
+    await refresh();
+    notify();
+  }
+  const send = () => uploadFile(path, filePath, fieldName, accessToken);
+  try {
+    return await send();
+  } catch (error) {
+    if (error instanceof ApiError && error.statusCode === 401) {
+      await refresh();
+      notify();
+      return send();
+    }
+    throw error;
+  }
+}
+
+async function authorizedDownload(path) {
+  if (!hasUsableAccessToken()) {
+    await refresh();
+    notify();
+  }
+  const send = () => downloadFile(path, accessToken);
   try {
     return await send();
   } catch (error) {
@@ -224,6 +259,8 @@ module.exports = {
   restore,
   refresh,
   authorized,
+  authorizedUpload,
+  authorizedDownload,
   logout,
   hasUsableAccessToken,
   resetForTest,

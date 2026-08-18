@@ -1,7 +1,69 @@
 <view class="mp-page {{enterClass}}">
-  <text class="mp-page__title">{{title}}</text>
-  <text class="mp-page__subtitle">{{description}}</text>
-  <view class="mp-section">
-    <feature-placeholder />
+  <view class="logs__header">
+    <view class="logs__heading">
+      <text class="mp-page__title">{{title}}</text>
+      <text class="mp-page__subtitle">{{description}}</text>
+    </view>
+    <button class="logs__create" size="mini" bindtap="openEditor">{{t.createLog}}</button>
   </view>
+
+  <text class="mp-text-error logs__error" wx:if="{{errorMessage}}">{{errorMessage}}</text>
+
+  <view class="mp-section" wx:if="{{editorOpen}}">
+    <glass-card>
+      <text class="logs__editor-title">{{t.createLog}}</text>
+      <input class="logs__input" maxlength="100" value="{{draftTitle}}" placeholder="{{t.logTitleLabel}}" bindinput="onTitleInput" />
+      <input class="logs__input" maxlength="200" value="{{draftSubtitle}}" placeholder="{{t.logSubtitleLabel}}" bindinput="onSubtitleInput" />
+      <textarea class="logs__textarea" maxlength="50000" value="{{draftBody}}" placeholder="{{t.logBodyHint}}" bindinput="onBodyInput" />
+      <view class="logs__photo-grid" wx:if="{{draftImages.length}}">
+        <view class="logs__photo-wrap" wx:for="{{draftImages}}" wx:key="*this">
+          <image class="logs__photo" src="{{item}}" mode="aspectFill" />
+          <button class="logs__photo-remove" size="mini" data-index="{{index}}" bindtap="removeImage">×</button>
+        </view>
+      </view>
+      <view class="logs__editor-actions">
+        <button size="mini" disabled="{{submitting || draftImages.length >= 9}}" bindtap="chooseImages">{{t.addPhotos}}</button>
+        <button size="mini" disabled="{{submitting}}" bindtap="closeEditor">{{t.cancel}}</button>
+        <button size="mini" type="primary" loading="{{submitting}}" disabled="{{submitting}}" bindtap="createLog">{{t.publish}}</button>
+      </view>
+    </glass-card>
+  </view>
+
+  <view class="mp-section logs__loading" wx:if="{{loadingLogs}}">
+    <text class="mp-text-hint">{{t.loading}}</text>
+  </view>
+
+  <view class="mp-section" wx:elif="{{logs.length === 0}}">
+    <glass-card>
+      <text class="logs__empty-title">{{t.logsEmptyTitle}}</text>
+      <text class="mp-text-hint logs__empty-description">{{t.logsEmptyDescription}}</text>
+    </glass-card>
+  </view>
+
+  <view class="mp-section logs__list" wx:else>
+    <glass-card wx:for="{{logs}}" wx:key="id" class="logs__card">
+      <view class="logs__meta">
+        <text class="logs__author">{{item.author_display_name}}</text>
+        <text class="mp-text-hint">{{item.created_at}}</text>
+      </view>
+      <text class="logs__title">{{item.title}}</text>
+      <text class="logs__subtitle" wx:if="{{item.subtitle}}">{{item.subtitle}}</text>
+      <text class="logs__body">{{item.body}}</text>
+      <view class="logs__photo-grid" wx:if="{{item.display_images.length}}">
+        <image class="logs__photo" wx:for="{{item.display_images}}" wx:key="*this" src="{{item}}" mode="aspectFill" />
+      </view>
+      <view class="logs__actions">
+        <button
+          class="logs__action {{item.liked_by_me ? 'logs__action--liked' : ''}}"
+          size="mini"
+          data-id="{{item.id}}"
+          data-liked="{{item.liked_by_me}}"
+          bindtap="toggleLike"
+        >♥ {{item.like_count}}</button>
+        <text class="mp-text-hint">{{item.comment_count}} {{t.commentsTitle}}</text>
+      </view>
+    </glass-card>
+  </view>
+
+  <button class="logs__more" wx:if="{{nextCursor}}" loading="{{loadingMore}}" disabled="{{loadingMore}}" bindtap="loadMore">{{t.loadMore}}</button>
 </view>

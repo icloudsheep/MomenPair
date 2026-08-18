@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "MomenPair",
+  "enablePullDownRefresh": true,
   "usingComponents": {
-    "feature-placeholder": "../../components/feature-placeholder/index"
+    "glass-card": "../../components/glass-card/index"
   }
 }

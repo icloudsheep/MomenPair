@@ -64,8 +64,8 @@ class LoginPage extends StatelessWidget {
                         l10n.independentAccountNotice,
                         textAlign: TextAlign.center,
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                              color: colorScheme.onSurfaceVariant,
-                            ),
+                          color: colorScheme.onSurfaceVariant,
+                        ),
                       ),
                       if (!enableFakeSocialLogin) ...[
                         const SizedBox(height: 12),

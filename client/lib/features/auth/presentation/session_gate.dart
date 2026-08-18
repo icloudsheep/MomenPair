@@ -16,8 +16,8 @@ class SessionGate extends StatelessWidget {
       SessionStatus.loading => const _LoadingPage(),
       SessionStatus.authenticated => const HomeShell(),
       SessionStatus.unauthenticated => LoginPage(
-          enableFakeSocialLogin: enableFakeSocialLogin,
-        ),
+        enableFakeSocialLogin: enableFakeSocialLogin,
+      ),
     };
   }
 }

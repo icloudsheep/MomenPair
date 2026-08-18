@@ -2,9 +2,9 @@ enum SocialProvider { wechat, qq }
 
 extension SocialProviderApi on SocialProvider {
   String get apiPath => switch (this) {
-        SocialProvider.wechat => 'auth/wechat/mobile',
-        SocialProvider.qq => 'auth/qq/mobile',
-      };
+    SocialProvider.wechat => 'auth/wechat/mobile',
+    SocialProvider.qq => 'auth/qq/mobile',
+  };
 
   String get wireName => name;
 }

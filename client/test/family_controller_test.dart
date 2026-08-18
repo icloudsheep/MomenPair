@@ -8,19 +8,21 @@ import 'package:momen_pair_client/features/families/domain/family_repository.dar
 import 'package:momen_pair_client/features/families/presentation/family_controller.dart';
 
 void main() {
-  test('returns a newly created code when invitation list refresh fails',
-      () async {
-    final controller = FamilyController(
-      repository: _InvitationRefreshFailureRepository(),
-      sessionController: _sessionController(),
-    );
+  test(
+    'returns a newly created code when invitation list refresh fails',
+    () async {
+      final controller = FamilyController(
+        repository: _InvitationRefreshFailureRepository(),
+        sessionController: _sessionController(),
+      );
 
-    final code = await controller.createInvitation();
+      final code = await controller.createInvitation();
 
-    expect(code, 'one-time-code');
-    expect(controller.errorCode, 'service_unavailable');
-    expect(controller.busy, isFalse);
-  });
+      expect(code, 'one-time-code');
+      expect(controller.errorCode, 'service_unavailable');
+      expect(controller.busy, isFalse);
+    },
+  );
 
   test('keeps a created family visible when detail refresh fails', () async {
     final controller = FamilyController(
@@ -37,18 +39,15 @@ void main() {
 }
 
 SessionController _sessionController() => SessionController(
-      repository: _UnusedAuthRepository(),
-      initialSession: _session,
-    );
+  repository: _UnusedAuthRepository(),
+  initialSession: _session,
+);
 
 class _InvitationRefreshFailureRepository extends Fake
     implements FamilyRepository {
   @override
   Future<CreatedFamilyInvitation> createInvitation(String accessToken) async =>
-      CreatedFamilyInvitation(
-        invitation: _invitation,
-        code: 'one-time-code',
-      );
+      CreatedFamilyInvitation(invitation: _invitation, code: 'one-time-code');
 
   @override
   Future<List<FamilyInvitation>> getInvitations(String accessToken) {

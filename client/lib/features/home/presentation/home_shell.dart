@@ -32,10 +32,16 @@ class _HomeShellState extends State<HomeShell> {
     final l10n = AppLocalizations.of(context);
     final destinations = <_Destination>[
       _Destination(
-          l10n.logsTitle, Icons.auto_stories_outlined, Icons.auto_stories),
+        l10n.logsTitle,
+        Icons.auto_stories_outlined,
+        Icons.auto_stories,
+      ),
       _Destination(l10n.noticesTitle, Icons.campaign_outlined, Icons.campaign),
       _Destination(
-          l10n.countdownsTitle, Icons.hourglass_empty, Icons.hourglass_full),
+        l10n.countdownsTitle,
+        Icons.hourglass_empty,
+        Icons.hourglass_full,
+      ),
       _Destination(
         l10n.notificationsTitle,
         Icons.notifications_outlined,
@@ -96,8 +102,9 @@ class _AnimatedPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final reduceMotion = MediaQuery.disableAnimationsOf(context);
     return AnimatedSwitcher(
-      duration:
-          reduceMotion ? Duration.zero : const Duration(milliseconds: 320),
+      duration: reduceMotion
+          ? Duration.zero
+          : const Duration(milliseconds: 320),
       switchInCurve: Curves.easeOutCubic,
       switchOutCurve: Curves.easeInCubic,
       transitionBuilder: (child, animation) {

@@ -9,6 +9,7 @@ from momen_pair.core.config import get_settings
 from momen_pair.db.base import Base
 from momen_pair.modules.accounts import models as account_models
 from momen_pair.modules.families import models as family_models
+from momen_pair.modules.logs import models as log_models
 
 config = context.config
 settings = get_settings()
@@ -18,7 +19,7 @@ if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
 target_metadata = Base.metadata
-_models = (account_models, family_models)
+_models = (account_models, family_models, log_models)
 
 
 def run_migrations_offline() -> None:

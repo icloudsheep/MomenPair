@@ -66,6 +66,58 @@
   "confirm": "确认",
   "retry": "重试",
   "familyOperationFailed": "家庭操作失败，请检查权限、邀请码或网络后重试。",
+  "logsRequireFamily": "请先在“我的”页面创建或加入家庭，日志只对当前家庭成员可见。",
+  "logsEmptyTitle": "还没有家庭日志",
+  "logsEmptyDescription": "写下第一条日志，记录值得一起记住的时刻。",
+  "createLog": "写日志",
+  "editLog": "编辑日志",
+  "logDetailTitle": "日志详情",
+  "logTitleLabel": "标题",
+  "logSubtitleLabel": "副标题（可选）",
+  "logBodyLabel": "正文",
+  "logBodyHint": "写下这一刻…",
+  "logTitleRequired": "请输入日志标题",
+  "logBodyRequired": "请输入日志正文",
+  "editMode": "编辑",
+  "previewMode": "预览",
+  "addPhotos": "添加图片",
+  "photoLimitHint": "最多 9 张，发布前会自动压缩",
+  "imageUploadFailed": "图片上传失败，请稍后重试",
+  "removePhoto": "移除图片",
+  "previewEmpty": "开始写作后可在这里预览",
+  "publish": "发布",
+  "save": "保存",
+  "delete": "删除",
+  "deleteLogTitle": "删除这篇日志？",
+  "deleteLogDescription": "删除后家庭成员将无法再访问正文，此操作不能在客户端撤销。",
+  "loadMore": "加载更多",
+  "likesCount": "{count} 个赞",
+  "@likesCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "commentsCount": "{count} 条评论",
+  "@commentsCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "commentsTitle": "评论",
+  "commentsEmpty": "还没有评论，来说点什么吧。",
+  "addComment": "写评论",
+  "commentHint": "写下评论…",
+  "send": "发送",
+  "reply": "回复",
+  "replyTo": "回复 @{name}",
+  "@replyTo": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "deletedComment": "这条评论已删除",
+  "logVersionConflict": "这篇内容已在其他设备更新，请返回列表刷新后再编辑。",
+  "logOperationFailed": "日志操作失败，请检查家庭权限或网络后重试。",
   "frameworkReady": "功能框架已就绪",
   "frameworkReadyDescription": "后续领域功能将在此基础上逐步接入。"
 }

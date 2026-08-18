@@ -63,7 +63,7 @@ import 'app_localizations_zh.dart';
 /// property.
 abstract class AppLocalizations {
   AppLocalizations(String locale)
-      : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -86,16 +86,16 @@ abstract class AppLocalizations {
   /// of delegates is preferred or required.
   static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
       <LocalizationsDelegate<dynamic>>[
-    delegate,
-    GlobalMaterialLocalizations.delegate,
-    GlobalCupertinoLocalizations.delegate,
-    GlobalWidgetsLocalizations.delegate,
-  ];
+        delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ];
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
     Locale('en'),
-    Locale('zh')
+    Locale('zh'),
   ];
 
   /// No description provided for @appName.
@@ -428,6 +428,228 @@ abstract class AppLocalizations {
   /// **'家庭操作失败，请检查权限、邀请码或网络后重试。'**
   String get familyOperationFailed;
 
+  /// No description provided for @logsRequireFamily.
+  ///
+  /// In zh, this message translates to:
+  /// **'请先在“我的”页面创建或加入家庭，日志只对当前家庭成员可见。'**
+  String get logsRequireFamily;
+
+  /// No description provided for @logsEmptyTitle.
+  ///
+  /// In zh, this message translates to:
+  /// **'还没有家庭日志'**
+  String get logsEmptyTitle;
+
+  /// No description provided for @logsEmptyDescription.
+  ///
+  /// In zh, this message translates to:
+  /// **'写下第一条日志，记录值得一起记住的时刻。'**
+  String get logsEmptyDescription;
+
+  /// No description provided for @createLog.
+  ///
+  /// In zh, this message translates to:
+  /// **'写日志'**
+  String get createLog;
+
+  /// No description provided for @editLog.
+  ///
+  /// In zh, this message translates to:
+  /// **'编辑日志'**
+  String get editLog;
+
+  /// No description provided for @logDetailTitle.
+  ///
+  /// In zh, this message translates to:
+  /// **'日志详情'**
+  String get logDetailTitle;
+
+  /// No description provided for @logTitleLabel.
+  ///
+  /// In zh, this message translates to:
+  /// **'标题'**
+  String get logTitleLabel;
+
+  /// No description provided for @logSubtitleLabel.
+  ///
+  /// In zh, this message translates to:
+  /// **'副标题（可选）'**
+  String get logSubtitleLabel;
+
+  /// No description provided for @logBodyLabel.
+  ///
+  /// In zh, this message translates to:
+  /// **'正文'**
+  String get logBodyLabel;
+
+  /// No description provided for @logBodyHint.
+  ///
+  /// In zh, this message translates to:
+  /// **'写下这一刻…'**
+  String get logBodyHint;
+
+  /// No description provided for @logTitleRequired.
+  ///
+  /// In zh, this message translates to:
+  /// **'请输入日志标题'**
+  String get logTitleRequired;
+
+  /// No description provided for @logBodyRequired.
+  ///
+  /// In zh, this message translates to:
+  /// **'请输入日志正文'**
+  String get logBodyRequired;
+
+  /// No description provided for @editMode.
+  ///
+  /// In zh, this message translates to:
+  /// **'编辑'**
+  String get editMode;
+
+  /// No description provided for @previewMode.
+  ///
+  /// In zh, this message translates to:
+  /// **'预览'**
+  String get previewMode;
+
+  /// No description provided for @addPhotos.
+  ///
+  /// In zh, this message translates to:
+  /// **'添加图片'**
+  String get addPhotos;
+
+  /// No description provided for @photoLimitHint.
+  ///
+  /// In zh, this message translates to:
+  /// **'最多 9 张，发布前会自动压缩'**
+  String get photoLimitHint;
+
+  /// No description provided for @imageUploadFailed.
+  ///
+  /// In zh, this message translates to:
+  /// **'图片上传失败，请稍后重试'**
+  String get imageUploadFailed;
+
+  /// No description provided for @removePhoto.
+  ///
+  /// In zh, this message translates to:
+  /// **'移除图片'**
+  String get removePhoto;
+
+  /// No description provided for @previewEmpty.
+  ///
+  /// In zh, this message translates to:
+  /// **'开始写作后可在这里预览'**
+  String get previewEmpty;
+
+  /// No description provided for @publish.
+  ///
+  /// In zh, this message translates to:
+  /// **'发布'**
+  String get publish;
+
+  /// No description provided for @save.
+  ///
+  /// In zh, this message translates to:
+  /// **'保存'**
+  String get save;
+
+  /// No description provided for @delete.
+  ///
+  /// In zh, this message translates to:
+  /// **'删除'**
+  String get delete;
+
+  /// No description provided for @deleteLogTitle.
+  ///
+  /// In zh, this message translates to:
+  /// **'删除这篇日志？'**
+  String get deleteLogTitle;
+
+  /// No description provided for @deleteLogDescription.
+  ///
+  /// In zh, this message translates to:
+  /// **'删除后家庭成员将无法再访问正文，此操作不能在客户端撤销。'**
+  String get deleteLogDescription;
+
+  /// No description provided for @loadMore.
+  ///
+  /// In zh, this message translates to:
+  /// **'加载更多'**
+  String get loadMore;
+
+  /// No description provided for @likesCount.
+  ///
+  /// In zh, this message translates to:
+  /// **'{count} 个赞'**
+  String likesCount(int count);
+
+  /// No description provided for @commentsCount.
+  ///
+  /// In zh, this message translates to:
+  /// **'{count} 条评论'**
+  String commentsCount(int count);
+
+  /// No description provided for @commentsTitle.
+  ///
+  /// In zh, this message translates to:
+  /// **'评论'**
+  String get commentsTitle;
+
+  /// No description provided for @commentsEmpty.
+  ///
+  /// In zh, this message translates to:
+  /// **'还没有评论，来说点什么吧。'**
+  String get commentsEmpty;
+
+  /// No description provided for @addComment.
+  ///
+  /// In zh, this message translates to:
+  /// **'写评论'**
+  String get addComment;
+
+  /// No description provided for @commentHint.
+  ///
+  /// In zh, this message translates to:
+  /// **'写下评论…'**
+  String get commentHint;
+
+  /// No description provided for @send.
+  ///
+  /// In zh, this message translates to:
+  /// **'发送'**
+  String get send;
+
+  /// No description provided for @reply.
+  ///
+  /// In zh, this message translates to:
+  /// **'回复'**
+  String get reply;
+
+  /// No description provided for @replyTo.
+  ///
+  /// In zh, this message translates to:
+  /// **'回复 @{name}'**
+  String replyTo(String name);
+
+  /// No description provided for @deletedComment.
+  ///
+  /// In zh, this message translates to:
+  /// **'这条评论已删除'**
+  String get deletedComment;
+
+  /// No description provided for @logVersionConflict.
+  ///
+  /// In zh, this message translates to:
+  /// **'这篇内容已在其他设备更新，请返回列表刷新后再编辑。'**
+  String get logVersionConflict;
+
+  /// No description provided for @logOperationFailed.
+  ///
+  /// In zh, this message translates to:
+  /// **'日志操作失败，请检查家庭权限或网络后重试。'**
+  String get logOperationFailed;
+
   /// No description provided for @frameworkReady.
   ///
   /// In zh, this message translates to:
@@ -468,8 +690,9 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
   }
 
   throw FlutterError(
-      'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
-      'an issue with the localizations generation tool. Please file an issue '
-      'on GitHub with a reproducible sample app and the gen-l10n configuration '
-      'that was used.');
+    'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
+    'an issue with the localizations generation tool. Please file an issue '
+    'on GitHub with a reproducible sample app and the gen-l10n configuration '
+    'that was used.',
+  );
 }

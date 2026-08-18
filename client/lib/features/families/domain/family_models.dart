@@ -73,10 +73,7 @@ class FamilyInvitation {
 }
 
 class CreatedFamilyInvitation {
-  const CreatedFamilyInvitation({
-    required this.invitation,
-    required this.code,
-  });
+  const CreatedFamilyInvitation({required this.invitation, required this.code});
 
   factory CreatedFamilyInvitation.fromJson(Map<String, Object?> json) {
     return CreatedFamilyInvitation(

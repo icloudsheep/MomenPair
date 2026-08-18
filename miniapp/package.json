@@ -4,7 +4,7 @@
   "private": true,
   "description": "MomenPair 微信小程序端",
   "scripts": {
-    "test": "node --test tests/"
+    "test": "node --test tests/*.test.js"
   },
   "engines": {
     "node": ">=18.0.0"

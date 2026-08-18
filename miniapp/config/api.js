@@ -11,6 +11,7 @@ const REFRESH = 'auth/refresh';
 const ME = 'auth/me';
 const LOGOUT = 'auth/logout';
 const LOGOUT_ALL = 'auth/logout-all';
+const LOGS = 'logs';
 
 module.exports = {
   WECHAT_LOGIN,
@@ -18,4 +19,5 @@ module.exports = {
   ME,
   LOGOUT,
   LOGOUT_ALL,
+  LOGS,
 };

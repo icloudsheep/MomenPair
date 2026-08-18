@@ -12,8 +12,8 @@ class FamilyController extends ChangeNotifier {
   FamilyController({
     required FamilyRepository repository,
     required SessionController sessionController,
-  })  : _repository = repository,
-        _sessionController = sessionController {
+  }) : _repository = repository,
+       _sessionController = sessionController {
     _sessionController.addListener(_handleSessionChange);
   }
 
@@ -91,9 +91,7 @@ class FamilyController extends ChangeNotifier {
       notifyListeners();
       return;
     }
-    await _replaceFamily(
-      (token) => _repository.create(token, name.trim()),
-    );
+    await _replaceFamily((token) => _repository.create(token, name.trim()));
   }
 
   Future<void> join(String code) async {
@@ -102,9 +100,7 @@ class FamilyController extends ChangeNotifier {
       notifyListeners();
       return;
     }
-    await _replaceFamily(
-      (token) => _repository.join(token, code.trim()),
-    );
+    await _replaceFamily((token) => _repository.join(token, code.trim()));
   }
 
   Future<String?> createInvitation() async {
@@ -197,9 +193,7 @@ class FamilyController extends ChangeNotifier {
     }
   }
 
-  Future<void> _runAction(
-    Future<void> Function(String token) operation,
-  ) async {
+  Future<void> _runAction(Future<void> Function(String token) operation) async {
     final token = _accessToken;
     if (token == null || _busy) {
       return;

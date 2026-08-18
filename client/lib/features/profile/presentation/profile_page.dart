@@ -129,9 +129,9 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
             const SizedBox(height: 20),
             switch (controller.status) {
-              FamilyStatus.idle ||
-              FamilyStatus.loading =>
-                const Center(child: CircularProgressIndicator()),
+              FamilyStatus.idle || FamilyStatus.loading => const Center(
+                child: CircularProgressIndicator(),
+              ),
               FamilyStatus.noFamily => _buildNoFamily(context, controller),
               FamilyStatus.ready => _buildCurrentFamily(context, controller),
               FamilyStatus.error => _buildFamilyError(context, controller),
@@ -154,10 +154,7 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  Widget _buildNoFamily(
-    BuildContext context,
-    FamilyController controller,
-  ) {
+  Widget _buildNoFamily(BuildContext context, FamilyController controller) {
     final l10n = AppLocalizations.of(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -259,14 +256,17 @@ class _ProfilePageState extends State<ProfilePage> {
           ],
         ],
         const SizedBox(height: 20),
-        Text(l10n.familyMembers,
-            style: Theme.of(context).textTheme.titleMedium),
+        Text(
+          l10n.familyMembers,
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
         for (final member in controller.members)
           _buildMemberTile(context, controller, member, isAdmin),
         const SizedBox(height: 20),
         OutlinedButton.icon(
-          onPressed:
-              controller.busy ? null : () => _confirmLeave(context, controller),
+          onPressed: controller.busy
+              ? null
+              : () => _confirmLeave(context, controller),
           icon: const Icon(Icons.exit_to_app),
           label: Text(l10n.leaveFamily),
         ),
@@ -295,11 +295,8 @@ class _ProfilePageState extends State<ProfilePage> {
       trailing: canManage
           ? PopupMenuButton<_MemberAction>(
               enabled: !controller.busy,
-              onSelected: (action) => _handleMemberAction(
-                controller,
-                member,
-                action,
-              ),
+              onSelected: (action) =>
+                  _handleMemberAction(controller, member, action),
               itemBuilder: (context) => [
                 PopupMenuItem(
                   value: member.role == FamilyRole.admin
@@ -321,10 +318,7 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  Widget _buildFamilyError(
-    BuildContext context,
-    FamilyController controller,
-  ) {
+  Widget _buildFamilyError(BuildContext context, FamilyController controller) {
     final l10n = AppLocalizations.of(context);
     return Column(
       children: [
@@ -333,10 +327,7 @@ class _ProfilePageState extends State<ProfilePage> {
           style: TextStyle(color: Theme.of(context).colorScheme.error),
         ),
         const SizedBox(height: 12),
-        OutlinedButton(
-          onPressed: controller.load,
-          child: Text(l10n.retry),
-        ),
+        OutlinedButton(onPressed: controller.load, child: Text(l10n.retry)),
       ],
     );
   }
@@ -421,9 +412,9 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   String _roleName(AppLocalizations l10n, FamilyRole role) => switch (role) {
-        FamilyRole.admin => l10n.familyAdmin,
-        FamilyRole.member => l10n.familyMember,
-      };
+    FamilyRole.admin => l10n.familyAdmin,
+    FamilyRole.member => l10n.familyMember,
+  };
 
   String _invitationStatusName(AppLocalizations l10n, String status) =>
       switch (status) {

@@ -15,7 +15,7 @@ abstract interface class SessionStore {
 
 class SecureSessionStore implements SessionStore {
   SecureSessionStore({FlutterSecureStorage? storage})
-      : _storage = storage ?? const FlutterSecureStorage();
+    : _storage = storage ?? const FlutterSecureStorage();
 
   static const _refreshTokenKey = 'momenpair.refresh_token';
   static const _deviceIdKey = 'momenpair.device_id';

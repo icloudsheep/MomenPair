@@ -4,10 +4,11 @@ import 'package:momen_pair_client/features/auth/domain/auth_models.dart';
 import 'package:momen_pair_client/features/auth/domain/auth_repository.dart';
 
 class HttpAuthRepository implements AuthRepository {
-  HttpAuthRepository(
-      {required ApiClient apiClient, required SessionStore store})
-      : _apiClient = apiClient,
-        _store = store;
+  HttpAuthRepository({
+    required ApiClient apiClient,
+    required SessionStore store,
+  }) : _apiClient = apiClient,
+       _store = store;
 
   final ApiClient _apiClient;
   final SessionStore _store;
