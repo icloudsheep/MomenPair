@@ -1,0 +1,18 @@
+<view class="tabbar">
+  <view
+    wx:for="{{tabs}}"
+    wx:key="pagePath"
+    class="tabbar__item {{selected === index ? 'tabbar__item--active' : ''}} {{reduceMotion ? 'tabbar__item--static' : ''}}"
+    data-index="{{index}}"
+    data-path="{{item.pagePath}}"
+    bindtap="onTap"
+    hover-class="none"
+    aria-role="tab"
+    aria-selected="{{selected === index}}"
+    aria-label="{{item.label}}"
+  >
+    <view class="tabbar__indicator" wx:if="{{selected === index}}"></view>
+    <text class="tabbar__icon">{{item.icon}}</text>
+    <text class="tabbar__label">{{item.label}}</text>
+  </view>
+</view>

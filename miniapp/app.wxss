@@ -1,0 +1,112 @@
+/* 设计令牌与共享样式。
+   色调对齐客户端 Material 3 种子色 #6750A4；玻璃效果只用于导航栏和重点卡片。
+   动画统一使用非线性缓动曲线，并遵守系统“减少动态效果”。 */
+
+page {
+  --mp-primary: #6750a4;
+  --mp-on-primary: #ffffff;
+  --mp-secondary-container: #e8def8;
+  --mp-on-secondary-container: #1d192b;
+  --mp-surface: #f5f2fa;
+  --mp-surface-container: #ece6f0;
+  --mp-surface-glass: rgba(245, 242, 250, 0.82);
+  --mp-on-surface: #1d1b20;
+  --mp-on-surface-variant: #49454f;
+  --mp-outline: rgba(121, 116, 126, 0.24);
+  --mp-error: #b3261e;
+
+  --mp-radius-card: 28rpx;
+  --mp-radius-pill: 999rpx;
+  --mp-space-sm: 16rpx;
+  --mp-space-md: 24rpx;
+  --mp-space-lg: 48rpx;
+
+  /* 弹簧感缓动，用于卡片入场和状态变化；标准缓动用于导航切换。 */
+  --mp-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --mp-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --mp-duration-medium: 320ms;
+
+  background-color: var(--mp-surface);
+  color: var(--mp-on-surface);
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  page {
+    --mp-primary: #d0bcff;
+    --mp-on-primary: #381e72;
+    --mp-secondary-container: #4a4458;
+    --mp-on-secondary-container: #e8def8;
+    --mp-surface: #141218;
+    --mp-surface-container: #211f26;
+    --mp-surface-glass: rgba(20, 18, 24, 0.82);
+    --mp-on-surface: #e6e0e9;
+    --mp-on-surface-variant: #cac4d0;
+    --mp-outline: rgba(147, 143, 153, 0.32);
+    --mp-error: #f2b8b5;
+  }
+}
+
+.mp-page {
+  min-height: 100vh;
+  padding: var(--mp-space-lg) var(--mp-space-md);
+  /* 自定义 tabBar 高度加安全区，避免内容被底部导航遮挡。 */
+  padding-bottom: calc(160rpx + env(safe-area-inset-bottom));
+  box-sizing: border-box;
+}
+
+.mp-page__title {
+  font-size: 56rpx;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--mp-on-surface);
+}
+
+.mp-page__subtitle {
+  margin-top: var(--mp-space-sm);
+  font-size: 28rpx;
+  line-height: 1.5;
+  color: var(--mp-on-surface-variant);
+}
+
+.mp-section {
+  margin-top: var(--mp-space-lg);
+}
+
+.mp-text-error {
+  color: var(--mp-error);
+  font-size: 26rpx;
+  line-height: 1.5;
+}
+
+.mp-text-hint {
+  color: var(--mp-on-surface-variant);
+  font-size: 24rpx;
+  line-height: 1.6;
+}
+
+/* 入场动画：非线性缓动 + 轻微位移，减少动态效果时由页面禁用。 */
+.mp-enter {
+  animation: mp-enter var(--mp-duration-medium) var(--mp-ease-spring) both;
+}
+
+.mp-enter--static {
+  animation: none;
+}
+
+@keyframes mp-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 24rpx, 0) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mp-enter {
+    animation: none;
+  }
+}

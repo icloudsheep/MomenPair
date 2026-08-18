@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "MomenPair",
+  "usingComponents": {
+    "glass-card": "../../components/glass-card/index",
+    "feature-placeholder": "../../components/feature-placeholder/index"
+  }
+}

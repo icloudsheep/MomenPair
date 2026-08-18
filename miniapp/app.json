@@ -1,0 +1,55 @@
+{
+  "pages": [
+    "pages/logs/index",
+    "pages/notices/index",
+    "pages/countdowns/index",
+    "pages/notifications/index",
+    "pages/profile/index",
+    "pages/login/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "MomenPair",
+    "navigationBarBackgroundColor": "#F5F2FA",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#F5F2FA",
+    "backgroundColorTop": "#F5F2FA",
+    "backgroundColorBottom": "#F5F2FA",
+    "enablePullDownRefresh": false
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#5C5668",
+    "selectedColor": "#6750A4",
+    "backgroundColor": "#F5F2FA",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/logs/index",
+        "text": "日志"
+      },
+      {
+        "pagePath": "pages/notices/index",
+        "text": "注意"
+      },
+      {
+        "pagePath": "pages/countdowns/index",
+        "text": "倒数"
+      },
+      {
+        "pagePath": "pages/notifications/index",
+        "text": "通知"
+      },
+      {
+        "pagePath": "pages/profile/index",
+        "text": "我的"
+      }
+    ]
+  },
+  "darkmode": true,
+  "themeLocation": "theme.json",
+  "style": "v2",
+  "lazyCodeLoading": "requiredComponents",
+  "permission": {},
+  "requiredPrivateInfos": [],
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,9 @@
+{
+  "desc": "MomenPair 是仅受邀家庭成员可访问的封闭家庭空间，全部页面禁止微信索引。",
+  "rules": [
+    {
+      "action": "disallow",
+      "page": "*"
+    }
+  ]
+}

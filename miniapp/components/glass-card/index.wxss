@@ -1,0 +1,31 @@
+.glass-card {
+  padding: 40rpx;
+  border-radius: var(--mp-radius-card);
+  background-color: var(--mp-surface-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1rpx solid var(--mp-outline);
+  box-sizing: border-box;
+  animation: glass-card-enter var(--mp-duration-medium) var(--mp-ease-spring) both;
+}
+
+.glass-card--static {
+  animation: none;
+}
+
+@keyframes glass-card-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 24rpx, 0) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glass-card {
+    animation: none;
+  }
+}

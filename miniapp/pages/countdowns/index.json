@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "MomenPair",
+  "usingComponents": {
+    "feature-placeholder": "../../components/feature-placeholder/index"
+  }
+}

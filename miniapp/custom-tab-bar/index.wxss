@@ -1,0 +1,83 @@
+.tabbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  display: flex;
+  padding: 12rpx 8rpx calc(12rpx + env(safe-area-inset-bottom));
+  /* 玻璃元素：半透明底色配模糊，导航栏对比度由 --mp-on-surface-variant 保证。 */
+  background-color: var(--mp-surface-glass);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-top: 1rpx solid var(--mp-outline);
+}
+
+.tabbar__item {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10rpx 0;
+  color: var(--mp-on-surface-variant);
+  transition: color var(--mp-duration-medium) var(--mp-ease-standard),
+    transform var(--mp-duration-medium) var(--mp-ease-spring);
+}
+
+.tabbar__item--active {
+  color: var(--mp-primary);
+  transform: translate3d(0, -4rpx, 0);
+}
+
+.tabbar__item--static {
+  transition: none;
+}
+
+/* 选中指示器使用弹簧曲线放大，对应客户端的非线性反馈。 */
+.tabbar__indicator {
+  position: absolute;
+  top: 2rpx;
+  width: 96rpx;
+  height: 56rpx;
+  border-radius: var(--mp-radius-pill);
+  background-color: var(--mp-secondary-container);
+  animation: tabbar-indicator var(--mp-duration-medium) var(--mp-ease-spring) both;
+}
+
+.tabbar__item--static .tabbar__indicator {
+  animation: none;
+}
+
+.tabbar__icon {
+  position: relative;
+  font-size: 36rpx;
+  line-height: 1.2;
+}
+
+.tabbar__label {
+  position: relative;
+  margin-top: 6rpx;
+  font-size: 22rpx;
+  line-height: 1.2;
+}
+
+@keyframes tabbar-indicator {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tabbar__item,
+  .tabbar__indicator {
+    transition: none;
+    animation: none;
+  }
+}

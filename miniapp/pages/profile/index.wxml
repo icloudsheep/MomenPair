@@ -1,0 +1,33 @@
+<view class="mp-page {{enterClass}}">
+  <text class="mp-page__title">{{title}}</text>
+  <text class="mp-page__subtitle">{{description}}</text>
+
+  <view class="mp-section" wx:if="{{user}}">
+    <glass-card>
+      <view class="profile__identity">
+        <text class="profile__avatar">{{avatarInitial}}</text>
+        <view class="profile__names">
+          <text class="profile__name">{{user.displayName}}</text>
+          <text class="profile__provider-label">{{t.currentLoginProvider}}</text>
+          <text class="profile__provider">{{user.provider === 'wechat' ? t.wechatProvider : t.qqProvider}}</text>
+        </view>
+      </view>
+      <text class="mp-text-hint profile__notice">{{t.independentAccountNotice}}</text>
+      <text class="mp-text-hint">{{t.accountRecoveryNotice}}</text>
+    </glass-card>
+  </view>
+
+  <view class="mp-section">
+    <feature-placeholder />
+  </view>
+
+  <view class="mp-section" wx:if="{{user}}">
+    <button
+      class="profile__logout"
+      type="default"
+      loading="{{status === 'loading'}}"
+      disabled="{{status === 'loading'}}"
+      bindtap="onLogoutTap"
+    >{{t.logout}}</button>
+  </view>
+</view>

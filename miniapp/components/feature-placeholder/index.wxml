@@ -1,0 +1,4 @@
+<view class="placeholder">
+  <text class="placeholder__badge">{{t.frameworkReady}}</text>
+  <text class="placeholder__text">{{t.frameworkReadyDescription}}</text>
+</view>

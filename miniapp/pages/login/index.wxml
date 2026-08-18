@@ -1,0 +1,22 @@
+<view class="login">
+  <glass-card ext-class="login__card">
+    <text class="login__mark">◈</text>
+    <text class="login__title">{{t.loginTitle}}</text>
+    <text class="login__description">{{t.loginDescription}}</text>
+
+    <button
+      class="login__primary"
+      type="primary"
+      loading="{{status === 'loading'}}"
+      disabled="{{status === 'loading'}}"
+      bindtap="onWechatLoginTap"
+    >{{status === 'loading' ? t.loginInProgress : t.loginWithWechat}}</button>
+
+    <text class="mp-text-hint login__notice">{{t.independentAccountNotice}}</text>
+    <text class="mp-text-hint">{{t.qqUnavailableInMiniprogram}}</text>
+
+    <view class="login__error" wx:if="{{errorMessage}}">
+      <text class="mp-text-error">{{errorMessage}}</text>
+    </view>
+  </glass-card>
+</view>

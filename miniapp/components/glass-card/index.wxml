@@ -1,0 +1,3 @@
+<view class="glass-card {{extClass}} {{reduceMotion ? 'glass-card--static' : ''}}">
+  <slot></slot>
+</view>

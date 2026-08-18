@@ -1,0 +1,7 @@
+<view class="mp-page {{enterClass}}">
+  <text class="mp-page__title">{{title}}</text>
+  <text class="mp-page__subtitle">{{description}}</text>
+  <view class="mp-section">
+    <feature-placeholder />
+  </view>
+</view>

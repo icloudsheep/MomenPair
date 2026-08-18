@@ -11,6 +11,7 @@ MomenPair 是一个面向受邀家庭成员的封闭家庭空间。仓库采用�
 ```text
 MomenPair/
 ├── client/                 Flutter 客户端，独立依赖与测试
+├── miniapp/                微信小程序端，独立配置与测试
 ├── server/                 FastAPI 后端，独立依赖、迁移与测试
 ├── docs/                   架构和接口约定
 ├── Baseline.md             产品需求评估与决策基线
@@ -18,13 +19,16 @@ MomenPair/
 └── README.md               项目总览与统一开发入口
 ```
 
-客户端不得直接依赖后端源码，后端也不得读取客户端工程文件；双方只通过版本化 HTTPS API、实时事件协议和生成后的接口契约协作。
+客户端不得直接依赖后端源码，后端也不得读取客户端工程文件；各端只通过版本化 HTTPS API、实时事件协议和生成后的接口契约协作。小程序端与 Flutter 客户端同样相互独立，不共享源码。
+
+小程序端只能使用微信登录，因为 QQ 互联不提供小程序 SDK；QQ 账号仍需在手机或桌面客户端登录。详见[小程序端说明](./miniapp/README.md)。
 
 ## 技术基线
 
 | 范围 | 技术 |
 | --- | --- |
 | 客户端 | Flutter、Dart、Material 3、ARB 本地化 |
+| 小程序端 | 微信小程序原生框架、自定义 tabBar、键值化文案 |
 | 后端 | Python 3.12+、FastAPI、Pydantic v2、SQLAlchemy 2 |
 | 数据 | MySQL 8.4 LTS、Redis 7.4、MinIO/S3 兼容对象存储 |
 | 迁移 | Alembic |
@@ -144,6 +148,7 @@ iOS/macOS 已配置 Keychain entitlement；macOS Debug 构建同时启用应用�
 - [系统架构](./docs/architecture.md)
 - [API 约定](./docs/api-conventions.md)
 - [客户端说明](./client/README.md)
+- [小程序端说明](./miniapp/README.md)
 - [后端说明](./server/README.md)
 - [安全策略](./SECURITY.md)
 - [贡献指南](./CONTRIBUTING.md)

@@ -1,0 +1,12 @@
+{
+  "name": "momen-pair-miniapp",
+  "version": "0.1.0",
+  "private": true,
+  "description": "MomenPair 微信小程序端",
+  "scripts": {
+    "test": "node --test tests/"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

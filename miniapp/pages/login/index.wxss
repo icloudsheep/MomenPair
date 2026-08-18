@@ -1,0 +1,58 @@
+.login {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--mp-space-lg) var(--mp-space-md);
+  box-sizing: border-box;
+}
+
+.login__card {
+  width: 100%;
+  max-width: 640rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.login__mark {
+  font-size: 72rpx;
+  line-height: 1;
+  text-align: center;
+  color: var(--mp-primary);
+}
+
+.login__title {
+  margin-top: var(--mp-space-md);
+  font-size: 44rpx;
+  font-weight: 600;
+  text-align: center;
+  color: var(--mp-on-surface);
+}
+
+.login__description {
+  margin-top: var(--mp-space-sm);
+  font-size: 28rpx;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--mp-on-surface-variant);
+}
+
+.login__primary {
+  margin-top: var(--mp-space-lg);
+  border-radius: var(--mp-radius-pill);
+  background-color: var(--mp-primary);
+  color: var(--mp-on-primary);
+  font-size: 32rpx;
+}
+
+.login__notice {
+  display: block;
+  margin-top: var(--mp-space-md);
+  text-align: center;
+}
+
+.login__error {
+  margin-top: var(--mp-space-md);
+  text-align: center;
+}
