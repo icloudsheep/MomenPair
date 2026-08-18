@@ -1,0 +1,85 @@
+name: momen-pair
+
+services:
+  api:
+    build:
+      context: ./server
+    environment:
+      MOMENPAIR_ENVIRONMENT: development
+      MOMENPAIR_DEBUG: "true"
+      MOMENPAIR_SECRET_KEY: ${MOMENPAIR_SECRET_KEY}
+      MOMENPAIR_SOCIAL_AUTH_MODE: ${MOMENPAIR_SOCIAL_AUTH_MODE:-fake}
+      MOMENPAIR_DATABASE_URL: mysql+asyncmy://${MYSQL_USER}:${MYSQL_PASSWORD}@mysql:3306/${MYSQL_DATABASE}
+      MOMENPAIR_REDIS_URL: redis://redis:6379/0
+      MOMENPAIR_OBJECT_STORAGE_ENDPOINT: http://minio:9000
+      MOMENPAIR_OBJECT_STORAGE_ACCESS_KEY: ${MINIO_ROOT_USER}
+      MOMENPAIR_OBJECT_STORAGE_SECRET_KEY: ${MINIO_ROOT_PASSWORD}
+      MOMENPAIR_OBJECT_STORAGE_BUCKET: momenpair-media
+      MOMENPAIR_ALLOWED_HOSTS: '["localhost","127.0.0.1","api","testserver"]'
+    ports:
+      - "8000:8000"
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+
+  mysql:
+    image: mysql:8.4
+    command:
+      - --server-id=1
+      - --log-bin=mysql-bin
+      - --binlog-format=ROW
+      - --binlog-row-image=FULL
+      - --binlog-expire-logs-seconds=604800
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  redis:
+    image: redis:7.4-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  minio:
+    image: minio/minio:RELEASE.2024-12-18T13-15-44Z
+    command: server /data --console-address :9001
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio-data:/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+volumes:
+  mysql-data:
+  redis-data:
+  minio-data:
